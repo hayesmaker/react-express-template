@@ -1,6 +1,6 @@
 {
-  "name": “express-react-template”,
-  "version": “1.0.0”,
+  "name": "express-react-template",
+  "version": "0.0.1",
   "private": false,
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
