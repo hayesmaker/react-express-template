@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001/",
+  "homepage": "http://andy-hayes.com/web/andy-hayes-devtask/",
   "devDependencies": {
     "react-scripts": "0.8.5"
   },
