@@ -13,6 +13,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showError: false,
       selectedEffects: [],
       allEffects: ['invert', 'red', 'green', 'blue']
     };
@@ -23,8 +24,14 @@ class App extends Component {
     navigator.mediaDevices.getUserMedia(constraints)
       .then(this.webcamConnected.bind(this))
       .catch(function error(error) {
+
+        let video = document.querySelector('video');
+        let feed = document.getElementById('feed');
+        let display = document.getElementById('display');
+        video.style.display = feed.style.display = display.style.display = 'none';
         console.log(error);
-      });
+        this.setState({showError: true});
+      }.bind(this));
   }
 
   /**
@@ -32,6 +39,7 @@ class App extends Component {
    * @param stream
    */
   webcamConnected(stream) {
+    this.setState({showError: false});
     let video = document.querySelector('video');
     video.srcObject = stream;
     video.style.display = 'none';
@@ -192,6 +200,17 @@ class App extends Component {
         </div>
 
         <Polaroid/>
+
+        {(() => {
+          if (this.state.showError) {
+            return (
+              <p className="error">Please Connect A Webcam or <br />
+                <a href="https://boast.io/allow-revoke-access-webcam/" target="_blank">enable your Webcam in Chrome Permissions</a><br />
+                And Refresh Your Page
+              </p>
+            )
+          }
+        })()}
 
         <video id="video" autoPlay={true}></video>
         <canvas id="display"></canvas>

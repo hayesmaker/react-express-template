@@ -2,6 +2,17 @@
   text-align: center;
 }
 
+p.error {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: white;
+}
+
+p.error a {
+    color: white;
+}
+
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
